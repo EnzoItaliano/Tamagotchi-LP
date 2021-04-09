@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Pet : StaticBody2D {
+public class Pet : Godot.Node2D {
 	// CONSTANTES
 	public const int GREAT = 80;
 	public const int TERRIBLE = 20;
@@ -10,6 +10,7 @@ public class Pet : StaticBody2D {
 	private DateTime last_login;
 
 	// ATRIBUTOS
+	private int outfit;
 	private int happy; //
 	private int hunger; //
 	private int health; //
@@ -144,10 +145,16 @@ public class Pet : StaticBody2D {
 
 
 	// GET'S
+	public int get_outfit(int pid) {
+		// outfit = rota_do_banco(pid);
+		return outfit;
+	}
+
 	public DateTime get_last_login(int pid) {
 		// last_login = rota_do_banco(pid);
 		return last_login;
 	}
+
 
 	// ATRIBUTOS
 	public int get_happy(int pid) {
@@ -596,6 +603,57 @@ public class Pet : StaticBody2D {
 	}
 
 
+	private void update_outfit(int pid) {
+		string local_file = "res://Pet/Outfits/";
+		string extension_file = ".png";
+		string file_name = "";
+
+		var girl_sprite = GetNode("Girl_Sprite");
+
+		if (outfit == 1) {
+			file_name = "Branca/";
+		}
+
+		if (dead) {
+			file_name += "Dead";
+		}
+		else {
+			// dormindo, doente, fome, sonolenta, cansada, sujo, triste/feliz
+
+			if (!light) {
+				file_name += "Sleeping";
+			}
+			else if (sick) {
+				file_name += "1";
+			}
+			else if (hunger <= TERRIBLE) {
+				file_name += "Annoyed";
+			}
+			else if (tired <= TERRIBLE || sleeping <= TERRIBLE) {
+				file_name += "Sleepy";
+			}
+			else if (dirty <= TERRIBLE) {
+				file_name += "5";
+			}
+			else if (sad > 50) {
+				file_name += "Sad";
+			}
+			else if (happy > 50) {
+				file_name += "Smile";
+			}
+			else {
+				file_name += "Normal";
+			}
+		}	
+		file_name = local_file + file_name + extension_file;
+
+		var img = (Texture)GD.Load(file_name);
+
+		GD.Print("Outfit: ", file_name);
+		girl_sprite.Call("update_sprite", img);
+
+	}
+
 	// Função de update do jogo.
 	private void _on_update(int pid) {
 		DateTime time_now = DateTime.Now;
@@ -604,7 +662,7 @@ public class Pet : StaticBody2D {
 		if (ticks <= 0) {
 			ticks = 1;
 		}
-		GD.Print(ticks);
+		// GD.Print(ticks);
 		GD.Print("Health: ", health);
 		
 		int k = 0;
@@ -618,6 +676,7 @@ public class Pet : StaticBody2D {
 				update_sad(pid);
 				update_sleeping(pid);
 				update_sick(pid);
+				update_outfit(pid);
 			}
 
 			k++;
@@ -637,13 +696,15 @@ public class Pet : StaticBody2D {
 		hunger = 40;
 		health = 80;
 		tired = 40;
-		sleeping = 40;
+		sleeping = 20;
 		dirty = 80;
 
 		normal = true;
 		sick = false;
 		dead = false;
 		light = true;
+
+		outfit = 1;
 		
 	}
 
