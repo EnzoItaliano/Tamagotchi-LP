@@ -2,6 +2,14 @@ using Godot;
 using System;
 
 public class Pet : Godot.Node2D {
+	// Função de update do jogo.
+	[Export] NodePath feed_button_path;
+	[Export] NodePath toilet_button_path;
+	[Export] NodePath play_button_path;
+	[Export] NodePath cure_button_path;
+	[Export] NodePath light_button_path;
+
+
 	// CONSTANTES
 	public const int GREAT = 80;
 	public const int TERRIBLE = 20;
@@ -31,7 +39,10 @@ public class Pet : Godot.Node2D {
 		int random_feed = random_num(1, 11);
 		
 		hunger += random_feed;
-		set_dirty(pid, hunger);
+		set_hunger(pid, hunger);
+
+		update_outfit(pid);
+		update_interface();
 	}
 
 	public void action_toilet(int pid) {
@@ -41,7 +52,14 @@ public class Pet : Godot.Node2D {
 			dirty += random_clean;	
 		}
 
+		if (dirty > 100) {
+			dirty = 100;
+		}
+
 		set_dirty(pid, dirty);
+
+		update_outfit(pid);
+		update_interface();
 	}
 
 	public void action_play(int pid) {
@@ -97,6 +115,9 @@ public class Pet : Godot.Node2D {
 			set_hunger(pid, hunger);
 			set_happy(pid, happy);
 			set_sad(pid, (100 - happy));
+
+			update_outfit(pid);
+			update_interface();
 		}
 
 		
@@ -117,12 +138,12 @@ public class Pet : Godot.Node2D {
 
 				set_health(pid, health);
 				set_sick(pid, sick);
-				set_dead(pid, normal);
 			}
 			else {
 				health -= random_num(1, 6);
+				GD.Print(health);
 
-				if (health < 0) {
+				if (health <= 0) {
 					health = 0;
 					set_dead(pid, true);
 				}
@@ -130,17 +151,27 @@ public class Pet : Godot.Node2D {
 				set_health(pid, health);
 			}
 		}
+
+		update_outfit(pid);
+		update_interface();
 	}
 
 	public void action_light(int pid) {
 		if(light) {
 			light = false;
+
+			state_button(true);
 		}
 		else {
 			light = true;
+
+			if (!dead) {
+				state_button(false);
+			}
 		}
 
 		set_light(pid, light);
+		update_outfit(pid);
 	}
 
 
@@ -270,6 +301,8 @@ public class Pet : Godot.Node2D {
 	}
 
 	private void set_dead(int pid, bool value) {
+		stop_dead_fuctions(pid);
+		
 		dead = value;
 		// rota_do_banco(pid, dead);
 	}
@@ -483,6 +516,10 @@ public class Pet : Godot.Node2D {
 			dirty -= 1;
 		}
 
+		if (dirty < 0) {
+			dirty = 0;
+		}
+
 		set_dirty(pid, dirty);
 	}
 
@@ -522,12 +559,6 @@ public class Pet : Godot.Node2D {
 
 	private void update_sick(int pid) {
 		int percent  = random_num(1, 10001);
-
-		float sad_percent = sad + 1;
-		float hunger_percent = hunger + 1;
-		float tired_percent = tired + 1;
-		float sleeping_percent = sleeping + 1;
-		float dirty_percent = sad + 1;
 		
 		int sick_percent = 0;
 
@@ -613,6 +644,13 @@ public class Pet : Godot.Node2D {
 		if (outfit == 1) {
 			file_name = "Branca/";
 		}
+		else if  (outfit == 2) {
+			file_name = "Morena/";
+		}
+		else {
+			file_name = "Ruiva/";
+		}
+
 
 		if (dead) {
 			file_name += "Dead";
@@ -654,7 +692,42 @@ public class Pet : Godot.Node2D {
 
 	}
 
-	// Função de update do jogo.
+
+	private void state_button(bool state) {
+		var feed_button = GetNode(feed_button_path);
+		var toilet_button = GetNode(toilet_button_path);
+		var play_button = GetNode(play_button_path);
+		var cure_button = GetNode(cure_button_path);
+
+		feed_button.Call("set_disabled", state);
+		toilet_button.Call("set_disabled", state);
+		play_button.Call("set_disabled", state);
+		cure_button.Call("set_disabled", state);
+	}
+
+	private void update_interface() {
+		var HP = GetNode("HP");
+		HP.Call("update_health_text", Convert.ToString(health));
+
+		var Hunger = GetNode("Hunger");
+		Hunger.Call("update_hunger_text", Convert.ToString(hunger));
+
+		var Dirty = GetNode("Dirty");
+		Dirty.Call("update_dirty_text", Convert.ToString(dirty));
+
+		var Sleep = GetNode("Sleep");
+		Sleep.Call("update_sleep_text", Convert.ToString(sleeping));
+
+		var Tired = GetNode("Tired");
+		Tired.Call("update_tired_text", Convert.ToString(tired));
+	}
+
+	private void stop_dead_fuctions(int pid) {
+		state_button(true);
+	}
+
+
+
 	private void _on_update(int pid) {
 		DateTime time_now = DateTime.Now;
 		int ticks = (int)((time_now - last_login).TotalSeconds / 2);
@@ -663,7 +736,7 @@ public class Pet : Godot.Node2D {
 			ticks = 1;
 		}
 		// GD.Print(ticks);
-		GD.Print("Health: ", health);
+		// GD.Print("Hunger: ", hunger);
 		
 		int k = 0;
 		while (k < ticks) {
@@ -676,20 +749,37 @@ public class Pet : Godot.Node2D {
 				update_sad(pid);
 				update_sleeping(pid);
 				update_sick(pid);
-				update_outfit(pid);
 			}
 
+			update_interface();
+			update_outfit(pid);
 			k++;
 		}
 
 		set_last_login(pid, time_now);
-
 		
 	}
 
 
+
 	// Called when the node enters the scene tree for the first time.
+	
+	
 	public override void _Ready() {
+		var feed_button = GetNode(feed_button_path);
+		var toilet_button = GetNode(toilet_button_path);
+		var play_button = GetNode(play_button_path);
+		var cure_button = GetNode(cure_button_path);
+		var light_button = GetNode(light_button_path);
+		
+
+		int pid = 1;
+		feed_button.Connect("pressed", this, "action_feed", new Godot.Collections.Array() {pid});
+		toilet_button.Connect("pressed", this, "action_toilet", new Godot.Collections.Array() {pid});
+		play_button.Connect("pressed", this, "action_play", new Godot.Collections.Array() {pid});
+		cure_button.Connect("pressed", this, "action_cure", new Godot.Collections.Array() {pid});
+		light_button.Connect("pressed", this, "action_light", new Godot.Collections.Array() {pid});
+
 		last_login = DateTime.Now;
 		happy = 50;
 		sad = 50;
@@ -707,10 +797,4 @@ public class Pet : Godot.Node2D {
 		outfit = 1;
 		
 	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }
