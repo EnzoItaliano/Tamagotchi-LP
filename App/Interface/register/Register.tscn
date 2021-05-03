@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Interface/register/Register.cs" type="Script" id=1]
+[ext_resource path="res://Interface/register/LineEdit_Username.cs" type="Script" id=2]
+[ext_resource path="res://Interface/register/LineEdit_Password.cs" type="Script" id=3]
+[ext_resource path="res://Interface/register/LineEdit_Confirm.cs" type="Script" id=4]
+[ext_resource path="res://Interface/register/Notification.cs" type="Script" id=5]
+[ext_resource path="res://Interface/register/HTTPRequest.cs" type="Script" id=6]
+
+[node name="Register" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 192.0
+margin_right = 512.0
+margin_bottom = 64.0
+text = "TELA DE REGISTRO"
+align = 1
+valign = 1
+percent_visible = -0.0714286
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label_Username" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 72.0
+margin_right = 240.0
+margin_bottom = 136.0
+text = "Usuário"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit_Username" type="LineEdit" parent="."]
+margin_left = 256.0
+margin_top = 72.0
+margin_right = 512.0
+margin_bottom = 136.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label_Password" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 152.0
+margin_right = 240.0
+margin_bottom = 216.0
+text = "Senha"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit_Password" type="LineEdit" parent="."]
+margin_left = 256.0
+margin_top = 152.0
+margin_right = 512.0
+margin_bottom = 216.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label_Confirm" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 232.0
+margin_right = 240.0
+margin_bottom = 297.0
+text = "Confirmar Senha"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineEdit_Confirm" type="LineEdit" parent="."]
+margin_left = 256.0
+margin_top = 232.0
+margin_right = 512.0
+margin_bottom = 296.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RegisterButton" type="Button" parent="."]
+margin_left = 191.0
+margin_top = 344.0
+margin_right = 511.0
+margin_bottom = 408.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notification" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 440.0
+margin_right = 576.0
+margin_bottom = 504.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 6 )
+[connection signal="pressed" from="RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Interface/Main.cs" type="Script" id=1]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RegisterButton" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 320.0
+margin_bottom = 192.0
+text = "REGISTRAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginButton" type="Button" parent="."]
+margin_left = 384.0
+margin_top = 128.0
+margin_right = 640.0
+margin_bottom = 192.0
+text = "LOGIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+margin_right = 656.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
