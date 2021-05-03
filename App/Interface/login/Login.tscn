@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Interface/login/LineEdit_Username.cs" type="Script" id=1]
+[ext_resource path="res://Interface/login/LineEdit_Password.cs" type="Script" id=2]
+[ext_resource path="res://Interface/login/Notification.cs" type="Script" id=3]
+[ext_resource path="res://Interface/login/Login.cs" type="Script" id=4]
+
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 512.0
+margin_bottom = 128.0
+text = "Tela de Login"
+align = 1
+valign = 1
+
+[node name="Username" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 152.0
+margin_right = 256.0
+margin_bottom = 216.0
+text = "Usuário"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit_LoginUsername" type="LineEdit" parent="."]
+margin_left = 288.0
+margin_top = 152.0
+margin_right = 544.0
+margin_bottom = 216.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 280.0
+margin_right = 256.0
+margin_bottom = 344.0
+text = "Senha"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit_LoginPassword" type="LineEdit" parent="."]
+margin_left = 288.0
+margin_top = 280.0
+margin_right = 544.0
+margin_bottom = 344.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginNotification" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 480.0
+margin_right = 520.0
+margin_bottom = 544.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginButton" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 384.0
+margin_right = 448.0
+margin_bottom = 448.0
+text = "LOGIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

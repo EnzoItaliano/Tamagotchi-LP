@@ -22,7 +22,6 @@ margin_bottom = 64.0
 text = "TELA DE REGISTRO"
 align = 1
 valign = 1
-percent_visible = -0.0714286
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -104,6 +103,7 @@ margin_left = 191.0
 margin_top = 344.0
 margin_right = 511.0
 margin_bottom = 408.0
+text = "REGISTRAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -120,5 +120,3 @@ __meta__ = {
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 script = ExtResource( 6 )
-[connection signal="pressed" from="RegisterButton" to="." method="_on_RegisterButton_pressed"]
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

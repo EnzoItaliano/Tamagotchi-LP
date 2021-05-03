@@ -13,7 +13,10 @@ public class Register : Control {
 		var password = GetNode("LineEdit_Password");
 		var confirm = GetNode("LineEdit_Confirm");
 		var notification = GetNode("Notification");
-		var http = GetNode("HTTPRequest");
+		// var http = GetNode("HTTPRequest");
+		var http = new HTTPRequest();
+
+		var servidor = GetNode("server");
 	
 		string username_text = Convert.ToString(username.Call("get_username_text"));
 		string password_text = Convert.ToString(password.Call("get_password_text"));
@@ -23,7 +26,8 @@ public class Register : Control {
 			notification.Call("update_notification_text", "Senha ou usuário inválido.");
 			return;
 		}
-		server.register(Convert.ToString(username.Call("get_username_text")), Convert.ToString(password.Call("get_password_text")), http);
+		// servidor.Call("register", username_text, password_text, http);
+		// server.register(Convert.ToString(username.Call("get_username_text")), Convert.ToString(password.Call("get_password_text")), http);
 	}
 }
 
