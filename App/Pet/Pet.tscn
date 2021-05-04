@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
 [ext_resource path="res://Pet/Outfits/Branca/Normal.png" type="Texture" id=2]
@@ -8,88 +8,6 @@
 [ext_resource path="res://Pet/Tired.cs" type="Script" id=6]
 [ext_resource path="res://Pet/Dirty.cs" type="Script" id=7]
 [ext_resource path="res://Pet/Sleep.cs" type="Script" id=8]
-[ext_resource path="res://assets/fonts/animeace2_bld.otf" type="DynamicFontData" id=9]
-[ext_resource path="res://assets/fonts/animeace2_reg.otf" type="DynamicFontData" id=10]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.772549, 0.227451, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.772549, 0.227451, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.772549, 0.227451, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.772549, 0.227451, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.929412, 1, 0.227451, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=11]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=12]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=13]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=14]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=15]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=16]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=17]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=18]
-font_data = ExtResource( 9 )
-
-[sub_resource type="DynamicFont" id=19]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=20]
-font_data = ExtResource( 9 )
 
 [node name="Pet" type="Node2D"]
 script = ExtResource( 1 )
@@ -114,9 +32,7 @@ margin_left = 96.0
 margin_top = 1088.0
 margin_right = 289.0
 margin_bottom = 1152.0
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
-text = "Feed"
+text = "Alimentar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -126,9 +42,7 @@ margin_left = 416.0
 margin_top = 1088.0
 margin_right = 608.0
 margin_bottom = 1152.0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
-text = "Take a shower"
+text = "Tomar Banho"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -138,9 +52,7 @@ margin_left = 96.0
 margin_top = 1200.0
 margin_right = 289.0
 margin_bottom = 1264.0
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "PLay"
+text = "Brincar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -150,22 +62,17 @@ margin_left = 416.0
 margin_top = 1200.0
 margin_right = 608.0
 margin_bottom = 1264.0
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
-text = "Cure"
+text = "Curar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Light_Button" type="Button" parent="."]
-margin_left = 12.0
-margin_top = 271.0
-margin_right = 95.0
-margin_bottom = 310.0
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0.101961, 0, 0.517647, 1 )
-text = "Light"
+margin_left = 34.8381
+margin_top = 270.649
+margin_right = 93.8381
+margin_bottom = 309.649
+text = "Luz"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -179,7 +86,6 @@ margin_left = 256.0
 margin_top = 64.0
 margin_right = 320.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 11 )
 align = 1
 valign = 1
 script = ExtResource( 4 )
@@ -191,8 +97,7 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 64.0
 margin_bottom = -8.0
-custom_fonts/font = SubResource( 12 )
-text = "Health"
+text = "HP"
 align = 1
 valign = 1
 __meta__ = {
@@ -204,7 +109,6 @@ margin_left = 256.0
 margin_top = 192.0
 margin_right = 320.0
 margin_bottom = 232.0
-custom_fonts/font = SubResource( 13 )
 align = 1
 valign = 1
 script = ExtResource( 5 )
@@ -216,8 +120,7 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-custom_fonts/font = SubResource( 14 )
-text = "Hunger"
+text = "Fome"
 align = 1
 valign = 1
 __meta__ = {
@@ -229,7 +132,6 @@ margin_left = 384.0
 margin_top = 64.0
 margin_right = 448.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 15 )
 align = 1
 valign = 1
 script = ExtResource( 6 )
@@ -241,8 +143,7 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 71.0
 margin_bottom = -8.0
-custom_fonts/font = SubResource( 16 )
-text = "Tired"
+text = "Cansaço"
 align = 1
 valign = 1
 __meta__ = {
@@ -254,7 +155,6 @@ margin_left = 384.0
 margin_top = 192.0
 margin_right = 448.0
 margin_bottom = 232.0
-custom_fonts/font = SubResource( 17 )
 align = 1
 valign = 1
 script = ExtResource( 8 )
@@ -266,8 +166,7 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-custom_fonts/font = SubResource( 18 )
-text = "Sleepy"
+text = "Sono"
 align = 1
 valign = 1
 __meta__ = {
@@ -279,7 +178,6 @@ margin_left = 512.0
 margin_top = 128.0
 margin_right = 576.0
 margin_bottom = 168.0
-custom_fonts/font = SubResource( 19 )
 align = 1
 valign = 1
 script = ExtResource( 7 )
@@ -291,8 +189,7 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-custom_fonts/font = SubResource( 20 )
-text = "Dirty"
+text = "Sujeira"
 align = 1
 valign = 1
 __meta__ = {

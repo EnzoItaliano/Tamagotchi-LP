@@ -5,8 +5,7 @@ using System.Linq;
 
 public class server : Node {
 	String REGISTER_URL = "http://localhost:3000/user";
-	String LOGIN_URL = "";
-	String current_token = "";
+	String LOGIN_URL = "http://localhost:3000/user";
 	
 
 	private String MyDictionaryToJson(Dictionary<string, string> dict) {
@@ -23,6 +22,17 @@ public class server : Node {
 
 		string[] headers = new string[] { "Content-Type: application/json" };
 		var result = http.Request(REGISTER_URL, headers, false, HTTPClient.Method.Post, MyDictionaryToJson(body));
+
+	}
+
+	public void login(String username, String password, HTTPRequest http) {
+		Dictionary<string, string> body = new Dictionary<string, string>() {
+			{"username", username},
+			{"password", password}
+		};
+
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(LOGIN_URL, headers, false, HTTPClient.Method.Get, MyDictionaryToJson(body));
 
 	}
 }
