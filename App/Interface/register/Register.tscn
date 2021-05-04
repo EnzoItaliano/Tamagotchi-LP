@@ -24,11 +24,11 @@ margin_left = 192.0
 margin_right = 512.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "SIGN UP"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -38,11 +38,11 @@ margin_top = 72.0
 margin_right = 240.0
 margin_bottom = 136.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Username"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -54,10 +54,8 @@ margin_bottom = 136.0
 custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Label_Password" type="Label" parent="."]
 margin_left = 128.0
@@ -65,11 +63,11 @@ margin_top = 152.0
 margin_right = 240.0
 margin_bottom = 216.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Password"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -80,9 +78,11 @@ margin_right = 512.0
 margin_bottom = 216.0
 custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+secret = true
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -92,13 +92,11 @@ margin_top = 232.0
 margin_right = 240.0
 margin_bottom = 297.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Confirm Password"
 align = 1
 valign = 1
 autowrap = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="LineEdit_Confirm" type="LineEdit" parent="."]
 margin_left = 256.0
@@ -108,9 +106,10 @@ margin_bottom = 296.0
 custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+secret = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -120,9 +119,11 @@ margin_top = 360.0
 margin_right = 640.0
 margin_bottom = 424.0
 custom_styles/hover = ExtResource( 10 )
-custom_styles/pressed = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "REGISTER"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,9 +135,11 @@ margin_top = 360.0
 margin_right = 320.0
 margin_bottom = 424.0
 custom_styles/hover = ExtResource( 10 )
-custom_styles/pressed = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false

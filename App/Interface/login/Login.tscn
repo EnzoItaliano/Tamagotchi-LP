@@ -1,20 +1,14 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Interface/login/LineEdit_LoginPassword.cs" type="Script" id=1]
 [ext_resource path="res://Interface/login/LineEdit_LoginUsername.cs" type="Script" id=2]
 [ext_resource path="res://Interface/login/LoginNotification.cs" type="Script" id=3]
 [ext_resource path="res://Interface/login/Login.cs" type="Script" id=4]
-[ext_resource path="res://assets/fonts/animeace2_bld.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/buttonStyle.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/fonts/animeace2_reg.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Interface/login/LoginHTTPRequest.cs" type="Script" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 7 )
+[ext_resource path="res://assets/regular_dynamicfont.tres" type="DynamicFont" id=9]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -31,9 +25,6 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 7 )
-
-[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=7]
@@ -53,16 +44,6 @@ corner_radius_bottom_left = 15
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.819608, 0.160784, 1, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="DynamicFont" id=11]
-font_data = ExtResource( 5 )
-
 [node name="Login" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -76,7 +57,8 @@ margin_left = 192.0
 margin_top = 64.0
 margin_right = 512.0
 margin_bottom = 128.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "LOGIN"
 align = 1
 valign = 1
@@ -89,7 +71,8 @@ margin_left = 136.0
 margin_top = 152.0
 margin_right = 256.0
 margin_bottom = 216.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Username"
 align = 1
 valign = 1
@@ -116,7 +99,8 @@ margin_left = 128.0
 margin_top = 280.0
 margin_right = 256.0
 margin_bottom = 344.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Password"
 align = 1
 valign = 1
@@ -157,8 +141,11 @@ margin_top = 384.0
 margin_right = 599.964
 margin_bottom = 448.0
 custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 5 )
 custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "LOGIN"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,15 +156,18 @@ margin_left = 136.128
 margin_top = 384.0
 margin_right = 328.128
 margin_bottom = 448.0
-custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LoginHTTPRequest" type="HTTPRequest" parent="."]
-script = ExtResource( 5 )
 [connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="request_completed" from="LoginHTTPRequest" to="." method="_on_LoginHTTPRequest_request_completed"]
