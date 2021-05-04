@@ -22,7 +22,7 @@ public class Login : Control {
 		var username = GetNode("LineEdit_LoginUsername");
 		var password = GetNode("LineEdit_LoginPassword");
 		var notification = GetNode("LoginNotification");
-		var http = GetNode("LoginHTTPRequest");
+		var http = GetNode<HTTPRequest>("LoginHTTPRequest");
 
 		string username_text = Convert.ToString(username.Call("get_LoginUsername_text"));
 		string password_text = Convert.ToString(password.Call("get_LoginPassword_text"));
@@ -33,7 +33,7 @@ public class Login : Control {
 		}
 
 		server server = new server();
-		server.login(username_text, password_text, (HTTPRequest)http);
+		server.login(username_text, password_text, http);
 	}
 	
 	private void _on_BackButton_pressed() {
