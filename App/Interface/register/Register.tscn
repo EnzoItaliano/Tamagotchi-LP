@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Interface/register/Register.cs" type="Script" id=1]
 [ext_resource path="res://Interface/register/LineEdit_Username.cs" type="Script" id=2]
@@ -6,6 +6,61 @@
 [ext_resource path="res://Interface/register/LineEdit_Confirm.cs" type="Script" id=4]
 [ext_resource path="res://Interface/register/Notification.cs" type="Script" id=5]
 [ext_resource path="res://Interface/register/HTTPRequest.cs" type="Script" id=6]
+[ext_resource path="res://assets/fonts/animeace2_bld.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/animeace2_reg.otf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.772549, 0.227451, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.772549, 0.227451, 1, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 7 )
 
 [node name="Register" type="Control"]
 anchor_right = 1.0
@@ -19,7 +74,8 @@ __meta__ = {
 margin_left = 192.0
 margin_right = 512.0
 margin_bottom = 64.0
-text = "TELA DE REGISTRO"
+custom_fonts/font = SubResource( 1 )
+text = "Sign Up"
 align = 1
 valign = 1
 __meta__ = {
@@ -32,7 +88,8 @@ margin_left = 128.0
 margin_top = 72.0
 margin_right = 240.0
 margin_bottom = 136.0
-text = "Usuário"
+custom_fonts/font = SubResource( 2 )
+text = "Username"
 align = 1
 valign = 1
 __meta__ = {
@@ -45,6 +102,7 @@ margin_left = 256.0
 margin_top = 72.0
 margin_right = 512.0
 margin_bottom = 136.0
+custom_styles/normal = SubResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
@@ -55,7 +113,8 @@ margin_left = 128.0
 margin_top = 152.0
 margin_right = 240.0
 margin_bottom = 216.0
-text = "Senha"
+custom_fonts/font = SubResource( 4 )
+text = "Password"
 align = 1
 valign = 1
 __meta__ = {
@@ -68,6 +127,8 @@ margin_left = 256.0
 margin_top = 152.0
 margin_right = 512.0
 margin_bottom = 216.0
+custom_styles/normal = SubResource( 5 )
+secret = true
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
@@ -79,7 +140,8 @@ margin_left = 128.0
 margin_top = 232.0
 margin_right = 240.0
 margin_bottom = 297.0
-text = "Confirmar Senha"
+custom_fonts/font = SubResource( 6 )
+text = "Confirm password"
 align = 1
 valign = 1
 autowrap = true
@@ -92,6 +154,8 @@ margin_left = 256.0
 margin_top = 232.0
 margin_right = 512.0
 margin_bottom = 296.0
+custom_styles/normal = SubResource( 7 )
+secret = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true,
@@ -103,7 +167,9 @@ margin_left = 368.0
 margin_top = 360.0
 margin_right = 640.0
 margin_bottom = 424.0
-text = "REGISTRAR"
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+text = "REGISTER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -113,7 +179,9 @@ margin_left = 48.0
 margin_top = 360.0
 margin_right = 320.0
 margin_bottom = 424.0
-text = "VOLTAR"
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
