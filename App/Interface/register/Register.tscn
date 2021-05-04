@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interface/register/Register.cs" type="Script" id=1]
 [ext_resource path="res://Interface/register/LineEdit_Username.cs" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Interface/register/LineEdit_Confirm.cs" type="Script" id=4]
 [ext_resource path="res://Interface/register/Notification.cs" type="Script" id=5]
 [ext_resource path="res://Interface/register/HTTPRequest.cs" type="Script" id=6]
+[ext_resource path="res://assets/regular_dynamicfont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/buttonStyle.tres" type="StyleBox" id=10]
 
 [node name="Register" type="Control"]
 anchor_right = 1.0
@@ -19,7 +23,8 @@ __meta__ = {
 margin_left = 192.0
 margin_right = 512.0
 margin_bottom = 64.0
-text = "TELA DE REGISTRO"
+custom_fonts/font = ExtResource( 8 )
+text = "SIGN UP"
 align = 1
 valign = 1
 __meta__ = {
@@ -32,7 +37,8 @@ margin_left = 128.0
 margin_top = 72.0
 margin_right = 240.0
 margin_bottom = 136.0
-text = "Usuário"
+custom_fonts/font = ExtResource( 7 )
+text = "Username"
 align = 1
 valign = 1
 __meta__ = {
@@ -45,6 +51,9 @@ margin_left = 256.0
 margin_top = 72.0
 margin_right = 512.0
 margin_bottom = 136.0
+custom_styles/focus = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 7 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
@@ -55,7 +64,8 @@ margin_left = 128.0
 margin_top = 152.0
 margin_right = 240.0
 margin_bottom = 216.0
-text = "Senha"
+custom_fonts/font = ExtResource( 7 )
+text = "Password"
 align = 1
 valign = 1
 __meta__ = {
@@ -68,6 +78,8 @@ margin_left = 256.0
 margin_top = 152.0
 margin_right = 512.0
 margin_bottom = 216.0
+custom_styles/focus = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
@@ -79,7 +91,8 @@ margin_left = 128.0
 margin_top = 232.0
 margin_right = 240.0
 margin_bottom = 297.0
-text = "Confirmar Senha"
+custom_fonts/font = ExtResource( 7 )
+text = "Confirm Password"
 align = 1
 valign = 1
 autowrap = true
@@ -92,6 +105,9 @@ margin_left = 256.0
 margin_top = 232.0
 margin_right = 512.0
 margin_bottom = 296.0
+custom_styles/focus = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 7 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true,
@@ -103,7 +119,11 @@ margin_left = 368.0
 margin_top = 360.0
 margin_right = 640.0
 margin_bottom = 424.0
-text = "REGISTRAR"
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
+text = "REGISTER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -113,7 +133,11 @@ margin_left = 48.0
 margin_top = 360.0
 margin_right = 320.0
 margin_bottom = 424.0
-text = "VOLTAR"
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
 [ext_resource path="res://Pet/Outfits/Branca/Normal.png" type="Texture" id=2]
@@ -8,6 +8,30 @@
 [ext_resource path="res://Pet/Tired.cs" type="Script" id=6]
 [ext_resource path="res://Pet/Dirty.cs" type="Script" id=7]
 [ext_resource path="res://Pet/Sleep.cs" type="Script" id=8]
+[ext_resource path="res://assets/regular_dynamicfont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/buttonStyle.tres" type="StyleBox" id=10]
+[ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.85098, 0.890196, 0.172549, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0431373, 0, 0.52549, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.85098, 0.890196, 0.172549, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Pet" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,7 +56,11 @@ margin_left = 96.0
 margin_top = 1088.0
 margin_right = 289.0
 margin_bottom = 1152.0
-text = "Alimentar"
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
+text = "Feed"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,7 +70,11 @@ margin_left = 416.0
 margin_top = 1088.0
 margin_right = 608.0
 margin_bottom = 1152.0
-text = "Tomar Banho"
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
+text = "Take a Shower"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,7 +84,11 @@ margin_left = 96.0
 margin_top = 1200.0
 margin_right = 289.0
 margin_bottom = 1264.0
-text = "Brincar"
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,17 +98,27 @@ margin_left = 416.0
 margin_top = 1200.0
 margin_right = 608.0
 margin_bottom = 1264.0
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Curar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Light_Button" type="Button" parent="."]
-margin_left = 34.8381
-margin_top = 270.649
-margin_right = 93.8381
-margin_bottom = 309.649
-text = "Luz"
+margin_left = 18.0
+margin_top = 271.0
+margin_right = 99.0
+margin_bottom = 310.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.0431373, 0, 0.52549, 1 )
+custom_colors/font_color_pressed = Color( 0.85098, 0.890196, 0.172549, 1 )
+text = "Light"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -86,6 +132,7 @@ margin_left = 256.0
 margin_top = 64.0
 margin_right = 320.0
 margin_bottom = 104.0
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 script = ExtResource( 4 )
@@ -97,7 +144,8 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 64.0
 margin_bottom = -8.0
-text = "HP"
+custom_fonts/font = ExtResource( 11 )
+text = "Health"
 align = 1
 valign = 1
 __meta__ = {
@@ -109,6 +157,7 @@ margin_left = 256.0
 margin_top = 192.0
 margin_right = 320.0
 margin_bottom = 232.0
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 script = ExtResource( 5 )
@@ -120,7 +169,8 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-text = "Fome"
+custom_fonts/font = ExtResource( 11 )
+text = "Hungry"
 align = 1
 valign = 1
 __meta__ = {
@@ -132,6 +182,7 @@ margin_left = 384.0
 margin_top = 64.0
 margin_right = 448.0
 margin_bottom = 104.0
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 script = ExtResource( 6 )
@@ -143,7 +194,8 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 71.0
 margin_bottom = -8.0
-text = "Cansaço"
+custom_fonts/font = ExtResource( 11 )
+text = "Tired"
 align = 1
 valign = 1
 __meta__ = {
@@ -155,6 +207,7 @@ margin_left = 384.0
 margin_top = 192.0
 margin_right = 448.0
 margin_bottom = 232.0
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 script = ExtResource( 8 )
@@ -166,7 +219,8 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-text = "Sono"
+custom_fonts/font = ExtResource( 11 )
+text = "Sleepy"
 align = 1
 valign = 1
 __meta__ = {
@@ -178,6 +232,7 @@ margin_left = 512.0
 margin_top = 128.0
 margin_right = 576.0
 margin_bottom = 168.0
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 script = ExtResource( 7 )
@@ -189,7 +244,8 @@ __meta__ = {
 margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
-text = "Sujeira"
+custom_fonts/font = ExtResource( 11 )
+text = "Dirty"
 align = 1
 valign = 1
 __meta__ = {
