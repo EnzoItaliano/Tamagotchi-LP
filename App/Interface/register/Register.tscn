@@ -99,20 +99,30 @@ __meta__ = {
 }
 
 [node name="RegisterButton" type="Button" parent="."]
-margin_left = 191.0
-margin_top = 344.0
-margin_right = 511.0
-margin_bottom = 408.0
+margin_left = 368.0
+margin_top = 360.0
+margin_right = 640.0
+margin_bottom = 424.0
 text = "REGISTRAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BackButton" type="Button" parent="."]
+margin_left = 48.0
+margin_top = 360.0
+margin_right = 320.0
+margin_bottom = 424.0
+text = "VOLTAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Notification" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 440.0
-margin_right = 576.0
-margin_bottom = 504.0
+margin_left = 112.0
+margin_top = 432.0
+margin_right = 560.0
+margin_bottom = 496.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -120,3 +130,6 @@ __meta__ = {
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 script = ExtResource( 6 )
+[connection signal="pressed" from="RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

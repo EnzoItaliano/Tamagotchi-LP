@@ -4,20 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class server : Node {
-	String REGISTER_URL = "";
+	String REGISTER_URL = "http://localhost:3000/user";
 	String LOGIN_URL = "";
 	String current_token = "";
 	
 
 	private String MyDictionaryToJson(Dictionary<string, string> dict) {
 		var entries = dict.Select(d =>
-			string.Format("\"{0}\": {1}", d.Key, string.Join(",", d.Value)));
+			string.Format("\"{0}\": \"{1}\"", d.Key, string.Join(",", d.Value)));
 		return "{" + string.Join(",", entries) + "}";
-	}
-
-	private string _get_token_id_result(Godot.SignalAwaiter result) {
-		
-		return "";
 	}
 
 	public void register(String username, String password, HTTPRequest http) {
@@ -26,13 +21,8 @@ public class server : Node {
 			{"password", password}
 		};
 
-		
-		// http.Request(REGISTER_URL, [], false, HTTPClient.METHOD_POST, MyDictionaryToJson(body));
-		// var result = ToSignal(http, "request completed");
-
-		// if (result[1] == 200) {
-		// 	current_token = _get_token_id_result(result);
-		// }
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(REGISTER_URL, headers, false, HTTPClient.Method.Post, MyDictionaryToJson(body));
 
 	}
 }

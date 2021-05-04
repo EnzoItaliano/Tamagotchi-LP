@@ -6,6 +6,10 @@ public class LineEdit_Confirm : LineEdit {
 		return Convert.ToString(Text);
 	}
 
+	public void set_confirm_text(String text) {
+		Text = text;
+	}
+
 	public override void _Ready() {
 		
 	}

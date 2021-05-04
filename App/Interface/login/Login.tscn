@@ -21,6 +21,9 @@ margin_bottom = 128.0
 text = "Tela de Login"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Username" type="Label" parent="."]
 margin_left = 136.0
@@ -71,19 +74,34 @@ margin_left = 200.0
 margin_top = 480.0
 margin_right = 520.0
 margin_bottom = 544.0
+align = 1
+valign = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LoginButton" type="Button" parent="."]
-margin_left = 256.0
+margin_left = 407.964
 margin_top = 384.0
-margin_right = 448.0
+margin_right = 599.964
 margin_bottom = 448.0
 text = "LOGIN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BackButton" type="Button" parent="."]
+margin_left = 136.128
+margin_top = 384.0
+margin_right = 328.128
+margin_bottom = 448.0
+text = "VOLTAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+[connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
