@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Interface/login/LineEdit_Username.cs" type="Script" id=1]
-[ext_resource path="res://Interface/login/LineEdit_Password.cs" type="Script" id=2]
-[ext_resource path="res://Interface/login/Notification.cs" type="Script" id=3]
+[ext_resource path="res://Interface/login/LineEdit_LoginPassword.cs" type="Script" id=1]
+[ext_resource path="res://Interface/login/LineEdit_LoginUsername.cs" type="Script" id=2]
+[ext_resource path="res://Interface/login/LoginNotification.cs" type="Script" id=3]
 [ext_resource path="res://Interface/login/Login.cs" type="Script" id=4]
 
 [node name="Login" type="Control"]
@@ -42,7 +42,7 @@ margin_left = 288.0
 margin_top = 152.0
 margin_right = 544.0
 margin_bottom = 216.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +64,7 @@ margin_left = 288.0
 margin_top = 280.0
 margin_right = 544.0
 margin_bottom = 344.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
