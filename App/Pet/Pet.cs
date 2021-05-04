@@ -39,6 +39,11 @@ public class Pet : Godot.Node2D {
 		int random_feed = random_num(1, 11);
 		
 		hunger += random_feed;
+
+		if (hunger >= 100) {
+			hunger = 100;
+		}
+
 		set_hunger(pid, hunger);
 
 		update_outfit(pid);
