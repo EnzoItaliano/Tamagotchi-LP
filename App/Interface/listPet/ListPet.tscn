@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Interface/listPet/ListPet.cs" type="Script" id=1]
+[ext_resource path="res://Interface/listPet/ListPetHTTPRequest.cs" type="Script" id=2]
+
+[node name="ListPet" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreatePetButton" type="Button" parent="."]
+margin_left = 587.257
+margin_top = 40.8803
+margin_right = 682.257
+margin_bottom = 90.8803
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ListPetBackButton" type="Button" parent="."]
+margin_left = 60.946
+margin_top = 44.4057
+margin_right = 140.946
+margin_bottom = 97.4057
+text = "VOLTAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 57.0
+margin_top = 138.622
+margin_right = 666.0
+margin_bottom = 901.622
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ListPetHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 2 )
+[connection signal="pressed" from="CreatePetButton" to="." method="_on_CreatePetButton_pressed"]
+[connection signal="pressed" from="ListPetBackButton" to="." method="_on_ListPetBackButton_pressed"]
+[connection signal="request_completed" from="ListPetHTTPRequest" to="." method="_on_ListPetHTTPRequest_request_completed"]

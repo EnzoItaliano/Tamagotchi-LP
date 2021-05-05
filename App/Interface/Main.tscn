@@ -6,14 +6,14 @@
 [ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=5]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.819608, 0.160784, 1, 1 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
 
 [node name="Main" type="Control"]
@@ -47,8 +47,8 @@ margin_right = 640.0
 margin_bottom = 192.0
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 5 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "LOGIN"

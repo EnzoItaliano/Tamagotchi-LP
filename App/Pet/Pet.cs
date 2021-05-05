@@ -646,11 +646,14 @@ public class Pet : Godot.Node2D {
 
 		var girl_sprite = GetNode("Girl_Sprite");
 
-		if (outfit == 1) {
+		if (outfit == 0) {
 			file_name = "Branca/";
 		}
-		else if  (outfit == 2) {
+		else if  (outfit == 1) {
 			file_name = "Morena/";
+		}
+		else if (outfit == 2) {
+			file_name = "Loira/";
 		}
 		else {
 			file_name = "Ruiva/";
