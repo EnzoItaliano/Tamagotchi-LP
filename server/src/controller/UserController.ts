@@ -5,17 +5,26 @@ import { AccountRepo } from "../repository/AccountRepo";
 import { BaseResponse } from "../base-response";
 
 export let getAllUsers = (req: Request, res: Response) => {
-  console.log("GET => GetAllUsers");
+  console.log("GET => GetUsers");
   let userRepo : AccountRepo = new AccountRepo();
   let baseResponse : BaseResponse = new BaseResponse();
-
   try{
-    let users = userRepo.getAllusers();
-    users.then(result => {
+    if(req.query.username){
+      let userName = req.query.username;
+      let user = userRepo.getuserByName(userName);
+      user.then(result => {
         baseResponse.isSuccess = true;
         baseResponse.response = JSON.stringify(result);
         res.send(baseResponse);
-    })
+      })
+    }else{
+      let users = userRepo.getAllusers();
+      users.then(result => {
+          baseResponse.isSuccess = true;
+          baseResponse.response = JSON.stringify(result);
+          res.send(baseResponse);
+      })
+    }
   }
   catch(e){
     console.log(e);
@@ -29,9 +38,9 @@ export let getuserById = (req: Request, res: Response) => {
     console.log("GET => Get User By Id");
     let userRepo: AccountRepo = new AccountRepo();
     let baseResponse : BaseResponse = new BaseResponse();
-
+    console.log(req.params.id);
     try {
-      let userId = req.body.id;
+      let userId = req.params.id;
       let user = userRepo.getuserById(userId);
       user.then(result => {
         baseResponse.isSuccess = true;
@@ -76,7 +85,7 @@ export let deleteUser = async (req: any, res: Response) => {
   let baseResponse : BaseResponse = new BaseResponse();
 
   try {
-    let userId = req.body.id;
+    let userId = req.params.id;
     let user = userRepo.getuserById(userId);
     user.then(result => {
       userEntity = result;

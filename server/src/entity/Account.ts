@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, Unique } from "typeorm";
 import { Pet } from "./Pet";
 
 @Entity("account")
+@Unique(["username"])
 export class Account {
 
     @PrimaryGeneratedColumn()

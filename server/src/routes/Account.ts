@@ -7,6 +7,8 @@ router.get("/", UserController.getAllUsers)
 
 router.post("/", UserController.saveUser)
 
+router.get("/:id", UserController.getuserById)
+
 router.delete("/:id", UserController.deleteUser)
 
 module.exports = router;

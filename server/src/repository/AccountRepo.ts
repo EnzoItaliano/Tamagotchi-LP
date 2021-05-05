@@ -19,4 +19,8 @@ export class AccountRepo {
     getuserById(userId: number) {
         return getManager().getRepository(Account).findOne(userId);
     }
+
+    getuserByName(userName: string) {
+        return getManager().getRepository(Account).find({ where: {username: userName} });
+    }
 }
