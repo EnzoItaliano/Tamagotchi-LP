@@ -803,6 +803,7 @@ public class Pet : Godot.Node2D {
 		light = true;
 
 		outfit = 1;
+		GD.Print(last_login);
 		
 	}
 }

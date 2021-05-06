@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Text;
+using Newtonsoft.Json.Linq;
 
 public class Register : Control {
 
@@ -8,9 +9,15 @@ public class Register : Control {
 		JSONParseResult json = JSON.Parse(Encoding.UTF8.GetString(body));
 		GD.Print(json.Result);
 
+		
+		var value = JObject.Parse(Encoding.UTF8.GetString(body));
+
 		var notification = GetNode("Notification");
 		if (json.Result == null){
 			notification.Call("update_notification_text", "Erro na requisição");
+		}
+		else if (!(bool)value["isSuccess"]) {
+			notification.Call("update_notification_text", "Já existe um usuário com esse nome!");
 		}
 		else {
 			notification.Call("update_notification_text", "Conta criada com sucesso!");

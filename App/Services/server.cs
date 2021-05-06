@@ -5,7 +5,9 @@ using System.Linq;
 
 public class server : Node {
 	String REGISTER_URL = "http://localhost:3000/user";
-	String LOGIN_URL = "http://localhost:3000/user";
+	String LOGIN_URL = "http://localhost:3000/user/?username=";
+	String REGISTER_PET_URL = "http://localhost:3000/pet";
+	String GET_PET_ACCOUNT_URL = "http://localhost:3000/pet";
 	
 
 	private String MyDictionaryToJson(Dictionary<string, string> dict) {
@@ -31,8 +33,24 @@ public class server : Node {
 			{"password", password}
 		};
 
+		LOGIN_URL += username;
 		string[] headers = new string[] { "Content-Type: application/json" };
 		var result = http.Request(LOGIN_URL, headers, false, HTTPClient.Method.Get, MyDictionaryToJson(body));
-
 	}
+
+	public void register_pet(String name_pet, int outfit_pet, int account_id , HTTPRequest http) {
+		String body = "{\"name\": \"" + name_pet + "\", \"outfit\": " + Convert.ToString(outfit_pet) 
+			+ ", \"account\": {\"id\": " +  Convert.ToString(account_id) + "}}";
+
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(REGISTER_PET_URL, headers, false, HTTPClient.Method.Post, body);
+	}
+
+	public void get_pet_account(int account_id, HTTPRequest http) {
+		GET_PET_ACCOUNT_URL += Convert.ToString(account_id);
+
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(GET_PET_ACCOUNT_URL, headers, false, HTTPClient.Method.Get);
+	}
+
 }

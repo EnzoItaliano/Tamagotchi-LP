@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Interface/createPet/LineEdit_NamePet.cs" type="Script" id=1]
 [ext_resource path="res://Interface/createPet/OptionButton.cs" type="Script" id=2]
 [ext_resource path="res://Interface/createPet/Preview_Sprite.cs" type="Script" id=3]
+[ext_resource path="res://Interface/createPet/CreatePet.cs" type="Script" id=4]
+[ext_resource path="res://Interface/createPet/CreateHTTPRequest.cs" type="Script" id=5]
+[ext_resource path="res://Interface/createPet/CreateNotification.cs" type="Script" id=6]
 
 [node name="CreatePet" type="Control"]
 anchor_right = 1.0
@@ -11,6 +14,7 @@ margin_left = 2.83313
 margin_top = -3.41882
 margin_right = 2.83313
 margin_bottom = -3.41882
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,24 +44,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OutfitPet" type="Label" parent="."]
-anchor_left = -0.443
-anchor_top = 0.069
-anchor_right = -0.443
-anchor_bottom = 0.069
-margin_left = 562.96
-margin_top = 167.68
-margin_right = 750.96
-margin_bottom = 231.68
-rect_pivot_offset = Vector2( -60.8288, 108.924 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Selecione uma roupa"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="OptionButton" type="OptionButton" parent="."]
 margin_left = 186.217
 margin_top = 309.044
@@ -68,9 +54,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OutfitPet" type="Label" parent="OptionButton"]
+anchor_left = -0.443
+anchor_top = 0.069
+anchor_right = -0.443
+anchor_bottom = 0.069
+margin_left = 200.872
+margin_top = -55.735
+margin_right = 388.872
+margin_bottom = 8.26499
+rect_pivot_offset = Vector2( -60.8288, 108.924 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Selecione uma roupa"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Preview_Sprite" type="Sprite" parent="OptionButton"]
-position = Vector2( 172.224, 480.28 )
-scale = Vector2( 0.632804, 0.632804 )
+position = Vector2( 177.617, 483.292 )
+scale = Vector2( 0.611822, 0.611822 )
 script = ExtResource( 3 )
 
 [node name="CreateButton" type="Button" parent="."]
@@ -82,4 +86,33 @@ text = "CRIAR"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CreateBackButton" type="Button" parent="."]
+margin_left = 21.1272
+margin_top = 30.2182
+margin_right = 198.127
+margin_bottom = 97.2182
+text = "VOLTAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 5 )
+
+[node name="CreateNotification" type="Label" parent="."]
+margin_left = 226.0
+margin_top = 1157.0
+margin_right = 480.0
+margin_bottom = 1188.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="item_selected" from="OptionButton" to="OptionButton" method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="CreateBackButton" to="." method="_on_CreateBackButton_pressed"]
+[connection signal="request_completed" from="CreateHTTPRequest" to="." method="_on_CreateHTTPRequest_request_completed"]

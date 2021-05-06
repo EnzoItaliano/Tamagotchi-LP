@@ -40,6 +40,10 @@ public class OptionButton : Godot.OptionButton {
 		girl_sprite.Call("update_Preview_Sprite", img);
 	}
 
+	public int get_OutfitPet_id() {
+		return Selected;
+	}
+
 	private void _on_OptionButton_item_selected(int index) {
 		change_Outfit_Create_Pet();
 	}
