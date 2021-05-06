@@ -81,6 +81,26 @@ export let savePet = async (req: Request, res: Response) => {
   res.send(baseResponse);
 }
 
+export let getpetById = (req: Request, res: Response) => {
+  console.log("GET => Get Pet By Id");
+  let petRepo : PetRepo = new PetRepo();
+  let baseResponse : BaseResponse = new BaseResponse();
+  try {
+    let petId = req.params.id;
+    let pet = petRepo.getpetById(petId);
+    pet.then(result => {
+      baseResponse.isSuccess = true;
+      baseResponse.response = JSON.stringify(result);
+      res.send(baseResponse);
+    })
+  } catch (e) {
+    console.log(e);
+    baseResponse.isSuccess = false;
+    baseResponse.response = JSON.stringify(e);
+    res.send(baseResponse)
+  }
+}
+
 export let deletePet = async (req: any, res: Response) => {
   console.log("DELETE ==> DeleteOrder");
 }

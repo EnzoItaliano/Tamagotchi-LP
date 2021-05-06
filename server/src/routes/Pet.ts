@@ -5,6 +5,8 @@ var router = new Router();
 
 router.get("/", PetController.getAllPets)
 
+router.get("/:id", PetController.getpetById)
+
 router.post("/", PetController.savePet)
 
 module.exports = router;
