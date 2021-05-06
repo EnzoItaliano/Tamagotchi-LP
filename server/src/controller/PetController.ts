@@ -6,14 +6,20 @@ import { PetRepo } from "../repository/PetRepo";
 import { AccountRepo } from "../repository/AccountRepo";
 
 export let getAllPets = async (req: Request, res: Response) => {
-  console.log("GET => GetAllPets");
+  console.log("GET => GetPets");
   let petRepo : PetRepo = new PetRepo();
   let baseResponse : BaseResponse = new BaseResponse();
 
   try{
-    let pets = await petRepo.getAllpets();
-    baseResponse.isSuccess = true;
-    baseResponse.response = JSON.stringify(pets);
+    if(req.query.account){
+      let pets = await petRepo.getpetsByUserId(req.query.account);
+      baseResponse.isSuccess = true;
+      baseResponse.response = JSON.stringify(pets);  
+    }else{
+      let pets = await petRepo.getAllpets();
+      baseResponse.isSuccess = true;
+      baseResponse.response = JSON.stringify(pets);
+    }
   }
   catch(e){
     console.log(e);
@@ -34,7 +40,29 @@ export let savePet = async (req: Request, res: Response) => {
 
   try {
     let pet_req : Pet = req.body;
+    petEntity.outfit = pet_req.outfit;
     petEntity.name = pet_req.name;
+    petEntity.happy = 50;
+    petEntity.sad = 50;
+    petEntity.hunger = 40;
+    petEntity.health = 80;
+    petEntity.tired = 40;
+    petEntity.sleeping = 40;
+    petEntity.dirty = 80;
+    petEntity.normal = true;
+    petEntity.sick = false;
+    petEntity.dead = false;
+    petEntity.light = true;
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var HH = String(today.getHours()).padStart(2, '0');
+    var MM = String(today.getMinutes()).padStart(2, '0');
+    var SS = String(today.getSeconds()).padStart(2, '0');
+    var time = `${dd}/${mm}/${yyyy} ${HH}:${MM}:${SS}`;
+    petEntity.time = time;
     //Get User Entity which is already persisted in DB
     petEntity.account = await accountRepo.getuserById(pet_req.account.id);
     console.log(petEntity.account);

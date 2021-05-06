@@ -19,4 +19,8 @@ export class PetRepo {
     getpetById(petId: number) {
         return getManager().getRepository(Pet).findOne(petId);
     }
+
+    getpetsByUserId(userId: number) {
+        return getManager().getRepository(Pet).find({ where: {account: userId} });
+    }
 }
