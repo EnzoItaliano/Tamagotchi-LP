@@ -1,5 +1,8 @@
 using Godot;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Text;
+using System.Dynamic;
 
 public class Pet : Godot.Node2D {
 	// Função de update do jogo.
@@ -9,6 +12,8 @@ public class Pet : Godot.Node2D {
 	[Export] NodePath cure_button_path;
 	[Export] NodePath light_button_path;
 
+	public int pid;
+
 
 	// CONSTANTES
 	public const int GREAT = 80;
@@ -16,6 +21,7 @@ public class Pet : Godot.Node2D {
 
 	// Declare member variables here.
 	private DateTime last_login;
+	private string name;
 
 	// ATRIBUTOS
 	private int outfit;
@@ -33,6 +39,69 @@ public class Pet : Godot.Node2D {
 	private bool sick; //
 	private bool dead; // vida chega em 0 morre
 	private bool light; // apaga ou desliga
+
+
+
+	private void _on_PetHTTPRequest_request_completed(int result, int response_code, string[] headers, byte[] body) {
+		var value = JObject.Parse(Encoding.UTF8.GetString(body));
+		
+		GD.Print("\n\n");
+		var pet = JObject.Parse((string)value["response"]);
+		
+		last_login = Convert.ToDateTime(pet["time"]);
+		happy = (int)pet["happy"];
+		sad = (int)pet["sad"];
+		hunger = (int)pet["hunger"];
+		health = (int)pet["health"];
+		tired = (int)pet["tired"];
+		sleeping = (int)pet["sleeping"];
+		dirty = (int)pet["dirty"];
+
+		normal = (bool)pet["normal"];
+		sick = (bool)pet["sick"];
+		dead = (bool)pet["dead"];
+		light = (bool)pet["light"];
+
+		outfit = (int)pet["outfit"];
+		name = (string)pet["name"];
+	}
+
+	private void _on_PetBackButton_pressed() {
+		var http = GetNode<HTTPRequest>("PetUpdateHTTPRequest");
+		
+		dynamic json = new ExpandoObject();
+		json.id = pid;
+		json.name = name;
+		json.outfit = outfit;
+		json.happy = happy;
+		json.hunger = hunger;
+		json.health = health;
+		json.tired = tired;
+		json.dirty = dirty;
+		json.sad = sad;
+		json.sleeping = sleeping;
+		json.normal = normal;
+		json.sick = sick;
+		json.dead = dead;
+		json.light = light;
+		json.time = Convert.ToString(last_login);
+
+		string json_string = Newtonsoft.Json.JsonConvert.SerializeObject(json);
+		
+		server server = new server();
+		server.update_pet(pid, json_string, http);	
+
+	}
+
+	private void _on_PetUpdateHTTPRequest_request_completed(int result, int response_code, string[] headers, byte[] body) {
+		JSONParseResult json = JSON.Parse(Encoding.UTF8.GetString(body));
+		GD.Print(json.Result);
+		
+		var globalVariables = (Global)GetNode("/root/Global");
+		globalVariables.pet_id = -1;
+		GetTree().ChangeScene("res://Interface/ListPet/ListPet.tscn");
+	}
+
 
 	// AÇÕES
 	public void action_feed(int pid) {
@@ -187,66 +256,54 @@ public class Pet : Godot.Node2D {
 	}
 
 	public DateTime get_last_login(int pid) {
-		// last_login = rota_do_banco(pid);
 		return last_login;
 	}
 
 
 	// ATRIBUTOS
 	public int get_happy(int pid) {
-		// happy = rota_do_banco(pid);
 		return happy;
 	}
 
 	public int get_hunger(int pid) {
-		// hunger = rota_do_banco(pid);
 		return hunger;
 	}
 
 	public int get_health(int pid) {
-		// health = rota_do_banco(pid);
 		return health;
 	}
 
 
 	// STATUS
 	public int get_tired(int pid) {
-		// tired = rota_do_banco(pid);
 		return tired;
 	}
 
 	public int get_dirty(int pid) {
-		// dirty = rota_do_banco(pid);
 		return dirty;
 	}
 
 	public int get_sad(int pid) {
-		// sad = rota_do_banco(pid);
 		return sad;
 	}
 
 	public int get_sleeping(int pid) {
-		// sleeping = rota_do_banco(pid);
 		return sleeping;
 	}
 
 	public bool get_normal(int pid) {
-		// normal = rota_do_banco(pid);
 		return normal;
 	}
 
 	public bool get_sick(int pid) {
-		// sick = rota_do_banco(pid);
 		return sick;
 	}
 
 	public bool get_dead(int pid) {
-		// dead = rota_do_banco(pid);
 		return dead;
 	}
 
 	public bool get_light(int pid) {
-		// light = rota_do_banco(pid);
 		return light;
 	}
 	
@@ -254,67 +311,55 @@ public class Pet : Godot.Node2D {
 	// SET'S
 	private void set_last_login(int pid, DateTime time) {
 		last_login = time;
-		// rota_do_banco(pid, time);
 	}
 
 	// ATRIBUTOS
 	private void set_happy(int pid, int value) {
 		happy = value;
-		// rota_do_banco(pid, happy);
 	}
 
 	private void set_hunger(int pid, int value) {
 		hunger = value;
-		// rota_do_banco(pid, hunger);
 	}
 
 	private void set_health(int pid, int value) {
 		health = value;
-		// rota_do_banco(pid, health);
 	}
 
 
 	// STATUS
 	private void set_tired(int pid, int value) {
 		tired = value;
-		// rota_do_banco(pid, tired);
 	}
 
 	private void set_dirty(int pid, int value) {
 		dirty = value;
-		// rota_do_banco(pid, dirty);
 	}
 
 	private void set_sad(int pid, int value) {
 		sad = value;
-		// rota_do_banco(pid, sad);
 	}
 
 	private void set_sleeping(int pid, int value) {
 		sleeping = value;
-		// rota_do_banco(pid, sleeping);
 	}
 
 	private void set_normal(int pid, bool value) {
 		normal = value;
-		// rota_do_banco(pid, normal);
 	}
 
 	private void set_sick(int pid, bool value) {
 		sick = value;
-		// rota_do_banco(pid, sick);
 	}
 
 	private void set_dead(int pid, bool value) {
 		stop_dead_fuctions(pid);
 		
 		dead = value;
-		// rota_do_banco(pid, dead);
 	}
 
 	private void set_light(int pid, bool value) {
 		light = value;
-		// rota_do_banco(pid, light);
 	}
 
 
@@ -514,6 +559,7 @@ public class Pet : Godot.Node2D {
 		set_tired(pid, tired);
 	}
 
+
 	private void update_dirty(int pid) {
 		int percent  = random_num(1, 10001);
 
@@ -695,7 +741,6 @@ public class Pet : Godot.Node2D {
 
 		var img = (Texture)GD.Load(file_name);
 
-		GD.Print("Outfit: ", file_name);
 		girl_sprite.Call("update_sprite", img);
 
 	}
@@ -736,7 +781,7 @@ public class Pet : Godot.Node2D {
 
 
 
-	private void _on_update(int pid) {
+	private void _on_update() {
 		DateTime time_now = DateTime.Now;
 		int ticks = (int)((time_now - last_login).TotalSeconds / 2);
 
@@ -769,10 +814,7 @@ public class Pet : Godot.Node2D {
 	}
 
 
-
 	// Called when the node enters the scene tree for the first time.
-	
-	
 	public override void _Ready() {
 		var feed_button = GetNode(feed_button_path);
 		var toilet_button = GetNode(toilet_button_path);
@@ -780,30 +822,17 @@ public class Pet : Godot.Node2D {
 		var cure_button = GetNode(cure_button_path);
 		var light_button = GetNode(light_button_path);
 		
+		var globalVariables = (Global)GetNode("/root/Global");
+		pid = globalVariables.pet_id;
 
-		int pid = 1;
 		feed_button.Connect("pressed", this, "action_feed", new Godot.Collections.Array() {pid});
 		toilet_button.Connect("pressed", this, "action_toilet", new Godot.Collections.Array() {pid});
 		play_button.Connect("pressed", this, "action_play", new Godot.Collections.Array() {pid});
 		cure_button.Connect("pressed", this, "action_cure", new Godot.Collections.Array() {pid});
 		light_button.Connect("pressed", this, "action_light", new Godot.Collections.Array() {pid});
 
-		last_login = DateTime.Now;
-		happy = 50;
-		sad = 50;
-		hunger = 40;
-		health = 80;
-		tired = 40;
-		sleeping = 20;
-		dirty = 80;
-
-		normal = true;
-		sick = false;
-		dead = false;
-		light = true;
-
-		outfit = 1;
-		GD.Print(last_login);
-		
+		var http = GetNode<HTTPRequest>("PetHTTPRequest");
+		server server = new server();
+		server.get_pet(pid, http);		
 	}
 }

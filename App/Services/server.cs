@@ -7,7 +7,10 @@ public class server : Node {
 	String REGISTER_URL = "http://localhost:3000/user";
 	String LOGIN_URL = "http://localhost:3000/user/?username=";
 	String REGISTER_PET_URL = "http://localhost:3000/pet";
-	String GET_PET_ACCOUNT_URL = "http://localhost:3000/pet";
+	String GET_PET_ACCOUNT_URL = "http://localhost:3000/pet/?account=";
+	String GET_PET_URL = "http://localhost:3000/pet/";
+
+	String GET_PET_UPDATE_URL = "http://localhost:3000/pet/";
 	
 
 	private String MyDictionaryToJson(Dictionary<string, string> dict) {
@@ -51,6 +54,21 @@ public class server : Node {
 
 		string[] headers = new string[] { "Content-Type: application/json" };
 		var result = http.Request(GET_PET_ACCOUNT_URL, headers, false, HTTPClient.Method.Get);
+	}
+
+	public void get_pet(int pid, HTTPRequest http) {
+		GET_PET_URL += Convert.ToString(pid);
+
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(GET_PET_URL, headers, false, HTTPClient.Method.Get);
+	}
+
+	public void update_pet(int pid, string json, HTTPRequest http) {
+		GET_PET_UPDATE_URL += Convert.ToString(pid);
+
+		// GD.Print(json);
+		// string[] headers = new string[] { "Content-Type: application/json" };
+		// var result = http.Request(GET_PET_UPDATE_URL, headers, false, HTTPClient.Method.Get);
 	}
 
 }

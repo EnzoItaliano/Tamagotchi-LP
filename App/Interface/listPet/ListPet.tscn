@@ -6,6 +6,8 @@
 [node name="ListPet" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.68369
+margin_right = 1.68372
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,17 +33,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="."]
-margin_left = 57.0
-margin_top = 138.622
-margin_right = 666.0
-margin_bottom = 901.622
+[node name="ListPetHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_left = 140.0
+margin_top = 170.0
+margin_right = 590.0
+margin_bottom = 240.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ListPetHTTPRequest" type="HTTPRequest" parent="."]
-script = ExtResource( 2 )
+[node name="Button2" type="Button" parent="."]
+visible = false
+margin_left = 140.0
+margin_top = 260.0
+margin_right = 590.0
+margin_bottom = 330.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="CreatePetButton" to="." method="_on_CreatePetButton_pressed"]
 [connection signal="pressed" from="ListPetBackButton" to="." method="_on_ListPetBackButton_pressed"]
 [connection signal="request_completed" from="ListPetHTTPRequest" to="." method="_on_ListPetHTTPRequest_request_completed"]

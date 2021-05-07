@@ -38,7 +38,6 @@ export let getuserById = (req: Request, res: Response) => {
     console.log("GET => Get User By Id");
     let userRepo: AccountRepo = new AccountRepo();
     let baseResponse : BaseResponse = new BaseResponse();
-    console.log(req.params.id);
     try {
       let userId = req.params.id;
       let user = userRepo.getuserById(userId);

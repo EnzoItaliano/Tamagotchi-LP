@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
 [ext_resource path="res://Pet/Outfits/Branca/Normal.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/buttonStyle.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=11]
 [ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=12]
+[ext_resource path="res://Pet/PetHTTPRequest.cs" type="Script" id=13]
+[ext_resource path="res://Pet/PetUpdateHTTPRequest.cs" type="Script" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.85098, 0.890196, 0.172549, 1 )
@@ -270,4 +272,23 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="timer_to_update" to="." method="_on_update" binds= [ 1 ]]
+
+[node name="PetHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 13 )
+
+[node name="PetBackButton" type="Button" parent="."]
+margin_left = 31.191
+margin_top = 60.9819
+margin_right = 196.191
+margin_bottom = 121.982
+text = "VOLTAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PetUpdateHTTPRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 14 )
+[connection signal="timeout" from="timer_to_update" to="." method="_on_update"]
+[connection signal="request_completed" from="PetHTTPRequest" to="." method="_on_PetHTTPRequest_request_completed"]
+[connection signal="pressed" from="PetBackButton" to="." method="_on_PetBackButton_pressed"]
+[connection signal="request_completed" from="PetUpdateHTTPRequest" to="." method="_on_PetUpdateHTTPRequest_request_completed"]
