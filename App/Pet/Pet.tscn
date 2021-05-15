@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
-[ext_resource path="res://Pet/Outfits/Branca/Normal.png" type="Texture" id=2]
 [ext_resource path="res://Pet/Girl_Sprite.cs" type="Script" id=3]
 [ext_resource path="res://Pet/HP.cs" type="Script" id=4]
 [ext_resource path="res://Pet/Hunger.cs" type="Script" id=5]
@@ -51,7 +50,6 @@ autostart = true
 [node name="Girl_Sprite" type="Sprite" parent="."]
 position = Vector2( 358.753, 580.682 )
 scale = Vector2( 0.711096, 0.711096 )
-texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Feed_Button" type="Button" parent="."]

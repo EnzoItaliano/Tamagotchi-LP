@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
 using System.Dynamic;
+using System.Globalization;
 
 public class Pet : Godot.Node2D {
 	// Função de update do jogo.
@@ -47,8 +48,14 @@ public class Pet : Godot.Node2D {
 		
 		GD.Print("\n\n");
 		var pet = JObject.Parse((string)value["response"]);
+	  	
+		CultureInfo provider = CultureInfo.InvariantCulture;
+		string format;
+		format = "dd/MM/yyyy HH:mm:ss";
 		
-		last_login = Convert.ToDateTime(pet["time"]);
+		last_login = DateTime.ParseExact(Convert.ToString(pet["time"]), format, provider);
+		GD.Print(last_login);
+		
 		happy = (int)pet["happy"];
 		sad = (int)pet["sad"];
 		hunger = (int)pet["hunger"];
@@ -716,7 +723,7 @@ public class Pet : Godot.Node2D {
 				file_name += "Sleeping";
 			}
 			else if (sick) {
-				file_name += "1";
+				file_name += "Sick";
 			}
 			else if (hunger <= TERRIBLE) {
 				file_name += "Annoyed";
@@ -736,7 +743,8 @@ public class Pet : Godot.Node2D {
 			else {
 				file_name += "Normal";
 			}
-		}	
+		}
+		// GD.Print(file_name);	
 		file_name = local_file + file_name + extension_file;
 
 		var img = (Texture)GD.Load(file_name);
