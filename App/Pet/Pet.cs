@@ -71,10 +71,18 @@ public class Pet : Godot.Node2D {
 
 		outfit = (int)pet["outfit"];
 		name = (string)pet["name"];
+
+
+		if(!light || dead) {
+			state_button(true);
+		}
 	}
 
 	private void _on_PetBackButton_pressed() {
 		var http = GetNode<HTTPRequest>("PetUpdateHTTPRequest");
+
+		var globalVariables = (Global)GetNode("/root/Global");
+		
 		
 		dynamic json = new ExpandoObject();
 		json.id = pid;
@@ -93,6 +101,12 @@ public class Pet : Godot.Node2D {
 		json.light = light;
 		json.time = Convert.ToString(last_login);
 
+		int acc_id = globalVariables.account_id;
+		dynamic account_json = new ExpandoObject();
+		
+		account_json.id = acc_id;
+		json.account = account_json;
+
 		string json_string = Newtonsoft.Json.JsonConvert.SerializeObject(json);
 		
 		server server = new server();
@@ -102,7 +116,7 @@ public class Pet : Godot.Node2D {
 
 	private void _on_PetUpdateHTTPRequest_request_completed(int result, int response_code, string[] headers, byte[] body) {
 		JSONParseResult json = JSON.Parse(Encoding.UTF8.GetString(body));
-		GD.Print(json.Result);
+		// GD.Print(json.Result);
 		
 		var globalVariables = (Global)GetNode("/root/Global");
 		globalVariables.pet_id = -1;
@@ -463,7 +477,7 @@ public class Pet : Godot.Node2D {
 
 	private void update_health(int pid) {
 		// hunger, tired, sad, sleeping
-		int value = happy;
+		int value = health;
 		int increment = 0;
 
 		if (hunger <= TERRIBLE || hunger > GREAT) {

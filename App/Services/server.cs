@@ -9,8 +9,7 @@ public class server : Node {
 	String REGISTER_PET_URL = "http://localhost:3000/pet";
 	String GET_PET_ACCOUNT_URL = "http://localhost:3000/pet/?account=";
 	String GET_PET_URL = "http://localhost:3000/pet/";
-
-	String GET_PET_UPDATE_URL = "http://localhost:3000/pet/";
+	String GET_PET_UPDATE_URL = "http://localhost:3000/pet";
 	
 
 	private String MyDictionaryToJson(Dictionary<string, string> dict) {
@@ -64,11 +63,10 @@ public class server : Node {
 	}
 
 	public void update_pet(int pid, string json, HTTPRequest http) {
-		GET_PET_UPDATE_URL += Convert.ToString(pid);
+		GD.Print(json);
 
-		// GD.Print(json);
-		// string[] headers = new string[] { "Content-Type: application/json" };
-		// var result = http.Request(GET_PET_UPDATE_URL, headers, false, HTTPClient.Method.Get);
+		string[] headers = new string[] { "Content-Type: application/json" };
+		var result = http.Request(GET_PET_UPDATE_URL, headers, false, HTTPClient.Method.Post, json);
 	}
 
 }
