@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
+[ext_resource path="res://assets/disabledButtonStyle.tres" type="StyleBox" id=2]
 [ext_resource path="res://Pet/Girl_Sprite.cs" type="Script" id=3]
 [ext_resource path="res://Pet/HP.cs" type="Script" id=4]
 [ext_resource path="res://Pet/Hunger.cs" type="Script" id=5]
@@ -13,6 +14,8 @@
 [ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=12]
 [ext_resource path="res://Pet/PetHTTPRequest.cs" type="Script" id=13]
 [ext_resource path="res://Pet/PetUpdateHTTPRequest.cs" type="Script" id=14]
+[ext_resource path="res://assets/Boards.png" type="Texture" id=15]
+[ext_resource path="res://assets/RoomLightOn.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.85098, 0.890196, 0.172549, 1 )
@@ -47,20 +50,38 @@ light_button_path = NodePath("Light_Button")
 wait_time = 2.0
 autostart = true
 
+[node name="Room" type="TextureRect" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Girl_Sprite" type="Sprite" parent="."]
 position = Vector2( 358.753, 580.682 )
 scale = Vector2( 0.711096, 0.711096 )
 script = ExtResource( 3 )
 
+[node name="Boards" type="TextureRect" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Feed_Button" type="Button" parent="."]
 margin_left = 96.0
-margin_top = 1088.0
+margin_top = 1056.0
 margin_right = 289.0
-margin_bottom = 1152.0
+margin_bottom = 1120.0
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color_disabled = Color( 0.560784, 0.560784, 0.560784, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "Feed"
@@ -70,13 +91,15 @@ __meta__ = {
 
 [node name="Toilet_Button" type="Button" parent="."]
 margin_left = 416.0
-margin_top = 1088.0
+margin_top = 1056.0
 margin_right = 608.0
-margin_bottom = 1152.0
+margin_bottom = 1120.0
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color_disabled = Color( 0.560784, 0.560784, 0.560784, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "Take a Shower"
@@ -86,13 +109,15 @@ __meta__ = {
 
 [node name="Play_Button" type="Button" parent="."]
 margin_left = 96.0
-margin_top = 1200.0
+margin_top = 1184.0
 margin_right = 289.0
-margin_bottom = 1264.0
+margin_bottom = 1248.0
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color_disabled = Color( 0.560784, 0.560784, 0.560784, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "Play"
@@ -102,13 +127,15 @@ __meta__ = {
 
 [node name="Cure_Button" type="Button" parent="."]
 margin_left = 416.0
-margin_top = 1200.0
+margin_top = 1184.0
 margin_right = 608.0
-margin_bottom = 1264.0
+margin_bottom = 1248.0
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color_disabled = Color( 0.560784, 0.560784, 0.560784, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "Curar"
@@ -155,7 +182,7 @@ margin_top = -48.0
 margin_right = 64.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Health"
 align = 1
 valign = 1
@@ -182,7 +209,7 @@ margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Hungry"
 align = 1
 valign = 1
@@ -209,7 +236,7 @@ margin_top = -48.0
 margin_right = 71.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Tired"
 align = 1
 valign = 1
@@ -236,7 +263,7 @@ margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Sleepy"
 align = 1
 valign = 1
@@ -263,7 +290,7 @@ margin_top = -48.0
 margin_right = 65.0
 margin_bottom = -8.0
 custom_fonts/font = ExtResource( 11 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Dirty"
 align = 1
 valign = 1
@@ -279,6 +306,12 @@ margin_left = 31.191
 margin_top = 60.9819
 margin_right = 196.191
 margin_bottom = 121.982
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "VOLTAR"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Interface/listPet/ListPet.cs" type="Script" id=1]
 [ext_resource path="res://Interface/listPet/ListPetHTTPRequest.cs" type="Script" id=2]
+[ext_resource path="res://assets/input_styleboxflat.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/buttonStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/bold_dynamicfont.tres" type="DynamicFont" id=5]
 
 [node name="ListPet" type="Control"]
 anchor_right = 1.0
@@ -14,20 +17,32 @@ __meta__ = {
 }
 
 [node name="CreatePetButton" type="Button" parent="."]
-margin_left = 587.257
-margin_top = 40.8803
-margin_right = 682.257
-margin_bottom = 90.8803
+margin_left = 582.316
+margin_top = 40.0
+margin_right = 677.316
+margin_bottom = 90.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ListPetBackButton" type="Button" parent="."]
-margin_left = 60.946
-margin_top = 44.4057
-margin_right = 140.946
-margin_bottom = 97.4057
+margin_left = 30.3163
+margin_top = 40.0
+margin_right = 164.316
+margin_bottom = 93.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
 text = "VOLTAR"
 __meta__ = {
 "_edit_use_anchors_": false
