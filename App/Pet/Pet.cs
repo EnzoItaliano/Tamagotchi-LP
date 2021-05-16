@@ -54,7 +54,7 @@ public class Pet : Godot.Node2D {
 		format = "dd/MM/yyyy HH:mm:ss";
 		
 		last_login = DateTime.ParseExact(Convert.ToString(pet["time"]), format, provider);
-		GD.Print(last_login);
+		// GD.Print(last_login);
 		
 		happy = (int)pet["happy"];
 		sad = (int)pet["sad"];
@@ -236,7 +236,7 @@ public class Pet : Godot.Node2D {
 			}
 			else {
 				health -= random_num(1, 6);
-				GD.Print(health);
+				// GD.Print(health);
 
 				if (health <= 0) {
 					health = 0;
@@ -746,7 +746,7 @@ public class Pet : Godot.Node2D {
 				file_name += "Sleepy";
 			}
 			else if (dirty <= TERRIBLE) {
-				file_name += "5";
+				file_name += "Dirty";
 			}
 			else if (sad > 50) {
 				file_name += "Sad";
