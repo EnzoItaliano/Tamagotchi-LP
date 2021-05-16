@@ -18,7 +18,7 @@ createConnection({
     ],
     synchronize: true,
     logging: false,
-    dropSchema: true
+    dropSchema: false
 }).then(async connection => {
 
     // create express app
