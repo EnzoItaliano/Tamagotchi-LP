@@ -43,17 +43,31 @@ export let savePet = async (req: Request, res: Response) => {
     petEntity.id = pet_req.id;
     petEntity.outfit = pet_req.outfit;
     petEntity.name = pet_req.name;
-    petEntity.happy = 50;
-    petEntity.sad = 50;
-    petEntity.hunger = 40;
-    petEntity.health = 80;
-    petEntity.tired = 40;
-    petEntity.sleeping = 40;
-    petEntity.dirty = 80;
-    petEntity.normal = true;
-    petEntity.sick = false;
-    petEntity.dead = false;
-    petEntity.light = true;
+    if (!pet_req.happy){
+        petEntity.happy = 50;
+        petEntity.sad = 50;
+        petEntity.hunger = 40;
+        petEntity.health = 80;
+        petEntity.tired = 40;
+        petEntity.sleeping = 40;
+        petEntity.dirty = 80;
+        petEntity.normal = true;
+        petEntity.sick = false;
+        petEntity.dead = false;
+        petEntity.light = true;
+    }else{
+        petEntity.happy = pet_req.happy;
+        petEntity.sad = pet_req.sad;
+        petEntity.hunger = pet_req.hunger;
+        petEntity.health = pet_req.health;
+        petEntity.tired = pet_req.tired;
+        petEntity.sleeping = pet_req.sleeping;
+        petEntity.dirty = pet_req.dirty;
+        petEntity.normal = pet_req.normal;
+        petEntity.sick = pet_req.sick;
+        petEntity.dead = pet_req.dead;
+        petEntity.light = pet_req.light;
+    }
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
