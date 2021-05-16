@@ -40,6 +40,7 @@ export let savePet = async (req: Request, res: Response) => {
 
   try {
     let pet_req : Pet = req.body;
+    petEntity.id = pet_req.id;
     petEntity.outfit = pet_req.outfit;
     petEntity.name = pet_req.name;
     petEntity.happy = 50;
