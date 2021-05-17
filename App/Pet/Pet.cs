@@ -76,6 +76,14 @@ public class Pet : Godot.Node2D {
 		if(!light || dead) {
 			state_button(true);
 		}
+
+		if(!light) {
+			var room = GetNode("Room");
+			string file_name = "res://assets/RoomLightOff.png";
+			
+			var img = (Texture)GD.Load(file_name);
+			room.Call("update_room_image", img);
+		}
 	}
 
 	private void _on_PetBackButton_pressed() {
@@ -252,18 +260,28 @@ public class Pet : Godot.Node2D {
 	}
 
 	public void action_light(int pid) {
+		var room = GetNode("Room");
+		string file_name = "";
 		if(light) {
 			light = false;
+
+			file_name = "res://assets/RoomLightOff.png";
 
 			state_button(true);
 		}
 		else {
 			light = true;
+			
+			file_name = "res://assets/RoomLightOn.png";
 
 			if (!dead) {
 				state_button(false);
 			}
 		}
+
+		// GD.Print(file_name);
+		var img = (Texture)GD.Load(file_name);
+		room.Call("update_room_image", img);
 
 		set_light(pid, light);
 		update_outfit(pid);
@@ -758,8 +776,8 @@ public class Pet : Godot.Node2D {
 				file_name += "Normal";
 			}
 		}
-		// GD.Print(file_name);	
 		file_name = local_file + file_name + extension_file;
+		// GD.Print(file_name);	
 
 		var img = (Texture)GD.Load(file_name);
 

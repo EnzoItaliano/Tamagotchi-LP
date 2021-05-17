@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Pet/Pet.cs" type="Script" id=1]
 [ext_resource path="res://assets/disabledButtonStyle.tres" type="StyleBox" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Pet/PetUpdateHTTPRequest.cs" type="Script" id=14]
 [ext_resource path="res://assets/Boards.png" type="Texture" id=15]
 [ext_resource path="res://assets/RoomLightOn.png" type="Texture" id=16]
+[ext_resource path="res://Pet/Room.cs" type="Script" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.85098, 0.890196, 0.172549, 1 )
@@ -54,6 +55,7 @@ autostart = true
 margin_right = 720.0
 margin_bottom = 1280.0
 texture = ExtResource( 16 )
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,7 +1,6 @@
 using Godot;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 using System.Text;
 
 public class ListPet : Control {
@@ -31,6 +30,21 @@ public class ListPet : Control {
 		var name_pet = (string)item["name"];
 		button.Text = name_pet;
 		button.Name = Convert.ToString(pid);
+
+		StyleBox theme = (StyleBox)GD.Load("res://assets/buttonStyle.tres");
+		button.AddStyleboxOverride("normal", theme);
+		button.AddStyleboxOverride("hover", theme);
+
+		theme = (StyleBox)GD.Load("res://assets/input_styleboxflat.tres");
+		button.AddStyleboxOverride("pressed", theme);
+
+		Font them_font = (Font)GD.Load("res://assets/bold_dynamicfont.tres");
+		button.AddFontOverride("font", them_font);
+
+		Color color_pressed = new Color(0.82f, 0.16f, 1.0f);
+		button.AddColorOverride("font_color_pressed", color_pressed);
+		color_pressed = new Color(1.0f, 1.0f, 1.0f);
+		button.AddColorOverride("font_color", color_pressed);
 
 		var position = new Vector2();
 		
