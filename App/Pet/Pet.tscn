@@ -140,7 +140,7 @@ custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color_disabled = Color( 0.560784, 0.560784, 0.560784, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
-text = "Curar"
+text = "Cure"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -314,7 +314,7 @@ custom_styles/normal = ExtResource( 10 )
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.160784, 1, 1 )
-text = "VOLTAR"
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
