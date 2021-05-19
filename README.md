@@ -8,7 +8,7 @@
 </div>
 
 <p align="center">
- <a href="#descricao">Objetivo</a> •
+ <a href="#pre-requisitos">Pré-requisitos</a> •
  <a href="#roadmap">Roadmap</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuicao">Contribuição</a> • 
@@ -20,6 +20,7 @@
   ✅  Projeto finalizado ✅
 </h4>
 
+<a name="#pre-requisitos"></a>
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
