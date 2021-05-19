@@ -17,6 +17,7 @@ Tabela de conteúdos
    * [Pre Requisitos](#pre-requisitos)
    * [Executando o projeto](#executando-o-projeto)
    * [Tecnologias](#tecnologias)
+   * [Autores](autores)
 <!--te-->
 
 Pre-requisitos
