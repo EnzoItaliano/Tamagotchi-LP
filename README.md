@@ -7,21 +7,20 @@
   <img src="https://img.shields.io/badge/c%23-%23239120.svg?&style=for-the-badge&logo=c-sharp&logoColor=white">
 </div>
 
-<p align="center">
- <a href="#pre-requisitos">Pré-requisitos</a> •
- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
-</p>
-
 <h4 align="center"> 
   ✅  Projeto finalizado ✅
 </h4>
 
-<a name="#pre-requisitos"></a>
-### Pré-requisitos
+Tabela de conteúdos
+=================
+<!--ts-->
+   * [Pre Requisitos](#pre-requisitos)
+   * [Executando o projeto](#executando-o-projeto)
+   * [Tecnologias](#tecnologias)
+<!--te-->
+
+Pre-requisitos
+==============
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 - [Git](https://git-scm.com);
@@ -30,6 +29,9 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 - [Mono version (C# support)](https://godotengine.org/download)
 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+Executando o projeto
+====================
 
 ### 🎲 Baixando os arquivos
 ```bash
@@ -74,7 +76,8 @@ $ npm start
 2. Localize a pasta App e selecione o arquivo project.godot, com isso ele abrirá o projeto.
 3. Clique no ícone de play no canto superior direito e ele abrirá o jogo.
 
-### 🛠 Tecnologias
+Tecnologias
+==============
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -87,8 +90,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [C#](https://docs.microsoft.com/pt-br/dotnet/csharp/)
 - [Godot](https://godotengine.org)
 
-### Autores
----
+Autores
+=======
+
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/enzoitaliano/"><img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/45704031?v=4" width="100px;" alt=""/></a><br /><a href="https://www.linkedin.com/in/enzoitaliano/" title="Enzo Italiano"><img href="https://www.linkedin.com/in/enzoitaliano/" src="https://img.shields.io/badge/-EnzoItaliano-0077B5?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/enzoitaliano/"></a></td>
